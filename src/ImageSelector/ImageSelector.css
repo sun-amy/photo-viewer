@@ -5,4 +5,16 @@
     border-radius: 5%;
     margin: 5px;
     cursor: pointer;
+    transition: border-color 0.3s ease, filter 0.3s ease;
+}
+
+.selected-thumbnail{
+    border: 5px solid #96feb4;
+    /* filter: blur(2px);  */
+}
+
+.random-image-button{
+    color: #96feb4;
+    background-color: #deb6ff;
+    margin-bottom: 10px;
 }

@@ -13,7 +13,8 @@ function App() {
       <div>
           <h1>React Photo Viewer</h1>
           <PhotoViewer src={currentUrl}/>
-          <ImageSelector setCurrentUrl={setCurrentUrl}/>
+          
+          <ImageSelector setCurrentUrl={setCurrentUrl} currentUrl={currentUrl}/>
       </div>
   );
 }

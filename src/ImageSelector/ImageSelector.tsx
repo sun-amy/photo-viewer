@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './ImageSelector.css'
 
 interface ImageSelectorProp {
+    currentUrl: string;
     setCurrentUrl: (url: string) => void; 
   }
 
@@ -24,11 +25,33 @@ export function ImageSelector(props: ImageSelectorProp) {
 
     const imageUrls = getImageUrls();
 
-    const imageThumbnails = imageUrls.map((imageUrl) => <img className="image-thumbnail" src={imageUrl} alt="image thumbnail" onClick={() => props.setCurrentUrl(imageUrl)}/>)
-
+    function handleThumbnailClick(imageUrl: string) {
+        console.log('Setting current URL to:', imageUrl);
+        props.setCurrentUrl(imageUrl);
+      }
+    
+      const imageThumbnails = imageUrls.map((imageUrl) => {
+        console.log('Comparing:', props.currentUrl, 'with', imageUrl);
+        return (
+          <img
+            key={imageUrl}
+            className={`image-thumbnail ${props.currentUrl === imageUrl ? "selected-thumbnail" : ""}`}
+            src={imageUrl}
+            alt="image thumbnail"
+            onClick={() => handleThumbnailClick(imageUrl)}
+          />
+        );
+      });
+    const randomImage = (imageUrls: string[]) => {
+        const randomIndex = Math.floor(Math.random() * imageUrls.length);
+        const randomImageUrl = imageUrls[randomIndex];
+        props.setCurrentUrl(randomImageUrl);
+      };
 
     return (
-        imageThumbnails
+        <div><button className='random-image-button' onClick={() => randomImage(imageUrls)}>Random</button>
+        <div className="image-thumbnails-container">{imageThumbnails}</div></div>
+        
     );
 }
 
