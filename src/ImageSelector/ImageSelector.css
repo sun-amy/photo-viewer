@@ -1,0 +1,8 @@
+.image-thumbnail{
+    height: 135px;
+    width: 240;
+    border: 5px solid #bafff4;
+    border-radius: 5%;
+    margin: 5px;
+    cursor: pointer;
+}
